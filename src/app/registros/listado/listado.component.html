@@ -1,0 +1,78 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+    <div class="container">
+        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<!--<input type="text" [(ngModel)]="personas"> -->
+<div class="container ">
+    <div class="card border-0 shadow my-5 ">
+        <div class="card-body p-5 ">
+            <h1 class="fw-light text-center">{{titulo}}</h1>
+            <hr>
+            <table class="table table-bordered border-dark text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Borrar</th>
+                        <th>Seleccionar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let articulos of inventario">
+                        <td>{{ articulos.id }}</td>
+                        <td>{{ articulos.nombre }}</td>
+                        <td>${{ articulos.precio }}</td>
+                        <td><button class=" btn btn-danger" (click)="eliminar(articulos.id)">Borrar</button></td>
+                        <td><button class="btn btn-secondary" (click)="seleccionar(articulos)">Seleccionar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <h1 class="fw-light ">Formulario</h1>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="ID">ID:</label>
+                    <input type="number" class="form-control border-dark" placeholder="Ejemplo: 1" [(ngModel)]="formulario.id">
+                </div>
+                <div class="col">
+                    <label for="Nombre">Nombre:</label>
+                    <input type="text" class="form-control border-dark" placeholder="Ejemplo: Gorra" [(ngModel)]="formulario.nombre">
+                </div>
+                <div class="col">
+                    <label for="Precio">Precio:</label>
+                    <input type="number" class="form-control border-dark" placeholder="Ejemplo: $250" [(ngModel)]="formulario.precio">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2"><button type="submit" class="btn btn-primary border-dark" (click)="agregar()">Agregar</button></div>
+                <div class="col-sm-2"><button type="submit" class="btn btn-warning border-dark" (click)="editar(formulario.id)">Editar</button></div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
